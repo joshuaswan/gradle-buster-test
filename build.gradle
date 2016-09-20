@@ -1,0 +1,26 @@
+group 'buster-test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'com.github.rundis.buster'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath  'com.github.rundis:gradle-buster-plugin:0.2.4.2'
+    }
+}
+
+build.dependsOn busterTest
